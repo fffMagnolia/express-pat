@@ -38,4 +38,31 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//DB connect test
+/*
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize(
+  'pat',
+  'root',
+  'Root@fb0009',
+  { host: 'localhost', dialect: 'mysql' },
+);
+
+sequelize.authenticate()
+  .then( () => { console.log('Success!') } )
+  .catch( err => { console.error('Connect fail.', err) } );
+*/
+
+//DB query test
+
+/*
+let db = require('./models/index');
+
+//findAll
+db.lists.findAll({}).then((result) => {
+  console.log(result);
+});
+*/
+
 module.exports = app;
