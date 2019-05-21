@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   lists.associate = function(models) {
     // associations can be defined here
+    lists.hasMany(models.items, { foreignKey: 'list_id'} );
   };
   return lists;
 };

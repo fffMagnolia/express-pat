@@ -3,18 +3,21 @@ var router = express.Router();
 
 let db = require('../models/index');
 
-/* GET home page. */
-/**
-  * やりたいこと：
-  * listテーブルからリスト情報を取得
-  * 取得したリスト情報のIDと一致するitemsデータを取得。
-  * {list_name: ['item1', 'item2']}みたいな形でビュー側に渡せたら最高
-  */
+let getList = (req, res, next) => {
+  db.lists.findAll({
+    include: [{ model: db.items }]
+  }).then((result) => {
+    res.json(result);
+    next();
+  })
+}
+
+// /にアクセスした際、router.getの処理以前に呼び出される
+router.use('/', getList);
+
 router.get('/', function(req, res, next) {
-  db.lists.findAll({}).then((lists) => {
-    console.log(JSON.parse(JSON.stringify(lists)))
-    res.render('index', { title: 'Express', lists: JSON.parse(JSON.stringify(lists)) });
-  });
+  //res.render('index', { title: 'Express'});
+  console.log('root access!!');
 });
 
 module.exports = router;
