@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var listsRouter = require('./routes/lists');
 
 var app = express();
 
@@ -20,7 +20,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/lists', listsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,16 +54,4 @@ sequelize.authenticate()
   .then( () => { console.log('Success!') } )
   .catch( err => { console.error('Connect fail.', err) } );
 */
-
-//DB query test
-
-/*
-let db = require('./models/index');
-
-//findAll
-db.lists.findAll({}).then((result) => {
-  console.log(result);
-});
-*/
-
 module.exports = app;
