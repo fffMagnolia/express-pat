@@ -41,9 +41,8 @@ let deleteItem = (req, res) => {
 
 /* リストに紐づいたアイテムを一括削除する */
 let deleteItems = (req, res) => {
-  db.items.findAll({ where: { list_id: req.params['listId'] } })
-    .then((items) => {
-      items.destroy();
+  db.items.destroy({ where: { list_id: req.params['listId'] } })
+    .then( _ => {
       res.end();
     })
 }
