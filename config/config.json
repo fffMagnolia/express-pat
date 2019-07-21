@@ -14,10 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "Root@fb0009",
-    "database": "pat",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_valiable": DATABASE_URL
   }
 }
