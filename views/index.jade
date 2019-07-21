@@ -2,4 +2,18 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+
+  table
+//    tr
+//      th ID
+//      th Title
+//      th Created
+//      th Updated
+    each list in lists
+      tr
+      each val, index in list
+        td= val
+    each item in items
+      tr
+      each val, index in item
+        td= val
